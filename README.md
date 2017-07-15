@@ -1,11 +1,29 @@
 # Moods
-## A POC Blockchain Application using Hyperledger Fabric v1.0
+#### A POC Blockchain Application using Hyperledger Fabric v1.0
 
-The Application can be divide
+### The Application
+The tasks in developing this Application can be divided as follows:
+* Setting up the Blockchain Network
+* Writing the Chaincode
+* Using the NodeJS SDK to query/update the network
+
+### Identity management - take three users: You, Me and Vandana
+Indentity Management is not implemented for this version of the application. Currently it is understood Fabric CA has to be used to create a user registory and enrollment based user credentials.
+
+### Lessons learned
+
+
+### Sources of code
+* This applications was built upon the codebase of [Fabcar Sample](https://github.com/hyperledger/fabric-samples/tree/release/fabcar) from the fabric-sample repo.
+* The network configuration files used are from [Basic-Network Sample](https://github.com/hyperledger/fabric-samples/tree/release/basic-network) from the fabric-sample repo.
+
+### Information sources
+* Major Information Source: Hyperledger Fabric [Documentation](https://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html)
+* Many other tutorials were tried out unsuccessfully.
 
 ```
 cd $GOPATH/src/github.com/hyperledger/fabric-samples
-git clone
+git clone https://github.com/YashAgarwal/moodsapp.git
 cd moodsapp
 #Start the Blockchain Nodes
 ./startFabric
