@@ -182,7 +182,7 @@ Response is  [{"Key":"MOOD0", "Record":{"case":"1","type":"2","user":"1"}},{"Key
 ```
 
 ```shell
-#this will run "createMood" function from the chaincode with the arguemnts ['MOOD4', '1', '1', '1'] denoting user 1 is Happy
+#this will run "createMood" function from the chaincode with the arguments ['MOOD4', '1', '1', '1'] denoting user 1 is Happy
 node invoke.js
 ```
 
@@ -213,15 +213,15 @@ Query result count =  1
 Response is  [{"Key":"MOOD0", "Record":{"case":"1","type":"2","user":"1"}},{"Key":"MOOD1", "Record":{"case":"1","type":"2","user":"2"}},{"Key":"MOOD2", "Record":{"case":"1","type":"2","user":"3"}},{"Key":"MOOD4", "Record":{"case":"1","type":"1","user":"1"}}]
 ```
 
-### Identity management - take three users: You, Me and Vandana
-Indentity Management is not implemented for this version of the application. Currently it is understood Fabric CA has to be used to create a user registory and enrollment based user credentials.
+### Identity management
+Indentity Management is not implemented for this version of the application. Currently it is understood Fabric CA has to be used to create a user registry and enrollment service as given in its [documentation](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#getting-started).
 
 ### Lessons learned
 * Basics of Docker Container
 * Setting up the developement environment for hyperledger fabric
-* Basic concepts in Hyperledger Fabric  
-  - The Transaction Process Flow
-  - The major components in a blockchain network
+* Some basic concepts in Hyperledger Fabric  
+  - The major components of hyperledger fabric
+  - The transaction process flow
 * Writing Chaincode in Go
 
 ### Sources of code
@@ -230,4 +230,4 @@ Indentity Management is not implemented for this version of the application. Cur
 
 ### Information sources
 * Major Information Source: Hyperledger Fabric [Documentation](https://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html)
-* Many other tutorials were tried out unsuccessfully.
+* a few other tutorials were tried out unsuccessfully.
