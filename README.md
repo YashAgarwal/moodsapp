@@ -219,9 +219,7 @@ Indentity Management is not implemented for this version of the application. Cur
 ### Lessons learned
 * Basics of Docker Container
 * Setting up the developement environment for hyperledger fabric
-* Some basic concepts in Hyperledger Fabric  
-  - The major components of hyperledger fabric
-  - The transaction process flow
+* Basic concepts in Hyperledger Fabric  
 * Writing Chaincode in Go
 
 ### Sources of code
