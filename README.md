@@ -147,21 +147,21 @@ type Mood struct {
   Case  string `json:"case"`
 }
 ```
-where,<br />
-Type 1 => Happy, Sad
-Type 2 => Excited, Bored
-Type 3 => Laughing, Crying
-for example  
-{User "1", Type: "1", Case: "1"} denotes Happy send by user "1"
-{User "1", Type: "1", Case: "2"} denotes Sad send by user "1"
-{User "1", Type: "2", Case: "1"} denotes Excited send by user "1"
+where, <br />
+Type 1 => Happy, Sad <br />
+Type 2 => Excited, Bored <br />
+Type 3 => Laughing, Crying <br />
+for example <br />
+{User "1", Type: "1", Case: "1"} denotes Happy send by user "1" <br />
+{User "1", Type: "1", Case: "2"} denotes Sad send by user "1" <br />
+{User "1", Type: "2", Case: "1"} denotes Excited send by user "1" <br />
 
 #### The Chaincode
 The chaincode written has the following functions
-* initLedger: It initializes the ledger with some sample entries
-* createMood: It adds a new entry to the ledger
-* queryMood: It returns one specific entry from the ledger
-* queryAllMoods: It displays all the entries listed in the ledger
+* initLedger: It initializes the state with some sample entries
+* createMood: It adds a new entry to the state
+* queryMood: It returns one specific entry from the state
+* queryAllMoods: It displays all the entries listed in the state
 
 #### The Node.js SDK is used as follows to issue query and update commands
 
