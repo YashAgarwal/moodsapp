@@ -7,20 +7,14 @@ The tasks in developing this Application can be divided as follows:
 * Writing the Chaincode
 * Using the NodeJS SDK to query/update the network
 
-### Identity management - take three users: You, Me and Vandana
-Indentity Management is not implemented for this version of the application. Currently it is understood Fabric CA has to be used to create a user registory and enrollment based user credentials.
+#### The Blockchain Network Setup
+The simplest possible network was setup in a Ubuntu 16.04 LTS Local Environment
+* One Orderer
+* One Peer in a Organisation
 
-### Lessons learned
+A Channel was created and the single Peer was added to the channel. The Go Chaincode was installed on the Peer's filesystem.
 
-
-### Sources of code
-* This applications was built upon the codebase of [Fabcar Sample](https://github.com/hyperledger/fabric-samples/tree/release/fabcar) from the fabric-sample repo.
-* The network configuration files used are from [Basic-Network Sample](https://github.com/hyperledger/fabric-samples/tree/release/basic-network) from the fabric-sample repo.
-
-### Information sources
-* Major Information Source: Hyperledger Fabric [Documentation](https://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html)
-* Many other tutorials were tried out unsuccessfully.
-
+Once [fabric-samples](https://hyperledger-fabric.readthedocs.io/en/latest/samples.html) is setup and the required prerequisites are installed as given [here](https://hyperledger-fabric.readthedocs.io/en/latest/prereqs.html) we can start the network as follows.
 ```
 cd $GOPATH/src/github.com/hyperledger/fabric-samples
 git clone https://github.com/YashAgarwal/moodsapp.git
@@ -29,6 +23,7 @@ cd moodsapp
 ./startFabric
 ```
 
+The script launches all the nodes(as docker containers) defined in our network configuration files
 ```shell
 docker-compose -f docker-compose.yml down
 Removing network net_basic
@@ -142,8 +137,36 @@ Creating cli
 
 Total execution time : 63 secs ...
 ```
+#### Data Storage
+A state database is stored using CouchDB. A single entry in the state is defined as
+
+```java
+type Mood struct {
+	User  string `json:"user"`
+	Type  string `json:"type"`
+  Case  string `json:"case"`
+}
+```
+where,
+Type 1 => Happy, Sad
+Type 2 => Excited, Bored
+Type 3 => Laughing, Crying
+for example  
+{User "1", Type: "1", Case: "1"} denotes Happy send by user "1"
+{User "1", Type: "1", Case: "2"} denotes Sad send by user "1"
+{User "1", Type: "2", Case: "1"} denotes Excited send by user "1"
+
+#### The Chaincode
+The chaincode written has the following functions
+* initLedger: It initializes the ledger with some sample entries
+* createMood: It adds a new entry to the ledger
+* queryMood: It returns one specific entry from the ledger
+* queryAllMoods: It displays all the entries listed in the ledger
+
+#### The Node.js SDK is used as follows to issue query and update commands
 
 ```shell
+#this will run "queryAllMoods" function from the chaincode
 node query.js
 ```
 
@@ -159,6 +182,7 @@ Response is  [{"Key":"MOOD0", "Record":{"case":"1","type":"2","user":"1"}},{"Key
 ```
 
 ```shell
+#this will run "createMood" function from the chaincode with the arguemnts ['MOOD4', '1', '1', '1'] denoting user 1 is Happy
 node invoke.js
 ```
 
@@ -188,3 +212,22 @@ returned from query
 Query result count =  1
 Response is  [{"Key":"MOOD0", "Record":{"case":"1","type":"2","user":"1"}},{"Key":"MOOD1", "Record":{"case":"1","type":"2","user":"2"}},{"Key":"MOOD2", "Record":{"case":"1","type":"2","user":"3"}},{"Key":"MOOD4", "Record":{"case":"1","type":"1","user":"1"}}]
 ```
+
+### Identity management - take three users: You, Me and Vandana
+Indentity Management is not implemented for this version of the application. Currently it is understood Fabric CA has to be used to create a user registory and enrollment based user credentials.
+
+### Lessons learned
+* Basics of Docker Container
+* Setting up the developement environment for hyperledger fabric
+* Basic concepts in Hyperledger Fabric  
+  - The Transaction Process Flow
+  - The major components in a blockchain network
+* Writing Chaincode in Go
+
+### Sources of code
+* This applications was built upon the codebase of [Fabcar Sample](https://github.com/hyperledger/fabric-samples/tree/release/fabcar) from the fabric-sample repo.
+* The network configuration files used are from [Basic-Network Sample](https://github.com/hyperledger/fabric-samples/tree/release/basic-network) from the fabric-sample repo.
+
+### Information sources
+* Major Information Source: Hyperledger Fabric [Documentation](https://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html)
+* Many other tutorials were tried out unsuccessfully.
