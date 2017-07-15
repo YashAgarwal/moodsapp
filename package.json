@@ -1,0 +1,22 @@
+{
+    "name": "moods",
+    "version": "1.0.0",
+    "description": "Hyperledger Fabric Mood Sample Application",
+    "main": "moods.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "fabric-ca-client": "^1.0.0",
+        "fabric-client": "^1.0.0"
+    },
+    "author": "Yash Agarwal",
+    "license": "Apache-2.0",
+    "keywords": [
+        "Hyperledger",
+        "Fabric",
+        "Mood",
+        "Sample",
+        "Application"
+    ]
+}
