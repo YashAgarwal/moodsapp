@@ -10,7 +10,7 @@ The tasks in developing this Application can be divided as follows:
 #### The Blockchain Network Setup
 The simplest possible network was setup in a Ubuntu 16.04 LTS Local Environment
 * One Orderer
-* One Peer in a Organisation
+* One Peer in an Organisation
 
 A Channel was created and the single Peer was added to the channel. The Go Chaincode was installed on the Peer's filesystem.
 
@@ -140,14 +140,14 @@ Total execution time : 63 secs ...
 #### Data Storage
 A state database is stored using CouchDB. A single entry in the state is defined as
 
-```java
+```
 type Mood struct {
-	User  string `json:"user"`
-	Type  string `json:"type"`
+  User  string `json:"user"`
+  Type  string `json:"type"`
   Case  string `json:"case"`
 }
 ```
-where,
+where,<br />
 Type 1 => Happy, Sad
 Type 2 => Excited, Bored
 Type 3 => Laughing, Crying
